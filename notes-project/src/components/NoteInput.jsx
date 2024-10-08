@@ -19,14 +19,14 @@ const NoteInput = () => {
     };
     
     return (
-    <div>
+    <div className='add-note'>
         <input
         type="text"
         placeholder="Введите заметку"
         value={noteTitle}
         onChange={(e) => setNoteTitle(e.target.value)}
         />
-        <button onClick={handleAddNote}>Добавить заметку</button>
+        <button className='add-button' onClick={handleAddNote}>Добавить заметку</button>
     </div>
     );
 };

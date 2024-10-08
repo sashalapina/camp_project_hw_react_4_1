@@ -19,7 +19,7 @@ const addedNotesSlice = createSlice({
     editNote: (state, action) => {
       const noteIndex = state.notes.findIndex((note) => note.id === action.payload.id)
       if (noteIndex !== -1) {
-        state.notes[noteIndex].titile = action.payload.titile
+        state.notes[noteIndex].title = action.payload.title
       }
     },
 

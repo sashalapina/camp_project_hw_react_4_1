@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { editNote, removeNote } from '../features/notes/addedNotesSlice';
 
@@ -14,13 +14,13 @@ const AddedNotesList = () => {
   };
 
   const handleSave = (id) => {
-    dispatch(editNote({ id, text: editedText }));
+    dispatch(editNote({ id, title: editedText }));
     setEditableNote(null);
   };
 
   return (
-    <div>
-      <h2>Избранные фильмы</h2>
+    <div className='added-notes'>
+      <h2>Добавленные заметки</h2>
       <ul>
         {notes.map((note) => (
           <li key={note.id}>
@@ -30,13 +30,15 @@ const AddedNotesList = () => {
                   value={editedText}
                   onChange={(e) => setEditedText(e.target.value)}
                 />
-                <button onClick={() => handleSave(note.id)}>Сохранить</button>
+                <button className='save-button' onClick={() => handleSave(note.id)}>Сохранить</button>
               </>
             ) : (
               <>
                 {note.title}
-                <button onClick={() => handleEdit(note)}>Редактировать</button>
-                <button onClick={() => dispatch(removeNote(note.id))}>Удалить</button>
+                <div className='btns-group'>
+                    <button className='edit-button' onClick={() => handleEdit(note)}>Редактировать</button>
+                    <button className='delete-button' onClick={() => dispatch(removeNote(note.id))}>Удалить</button>
+                </div>
               </>
             )}
           </li>
